@@ -1,4 +1,4 @@
-﻿using Spectre.Console;
+using Spectre.Console;
 using Spectre.Console.Cli;
 
 internal class DownloadCommand : AsyncCommand<DownloadSettings>
@@ -37,17 +37,44 @@ internal class DownloadCommand : AsyncCommand<DownloadSettings>
         if (mmprojFile != null)
             downloads.Add(new(repo, mmprojFile.Name));
 
+        // Determine the actual target directory
+        string actualTargetDir = settings.TargetDir;
+        if (settings.Folder)
+        {
+            // Sanitize the model name to create a folder name
+            // Replace invalid characters with _
+            var sanitizedName = repo.Replace("/", "_").Replace(":", "_")
+                .Replace("\\", "_").Replace("/", "_");
+            actualTargetDir = Path.Combine(settings.TargetDir, sanitizedName);
+            Directory.CreateDirectory(actualTargetDir);
+        }
+
         await DownloadManager.Run(
             downloads,
-            settings.TargetDir,
+            actualTargetDir,
             client,
             settings.Threads);
 
-        var modelPath = Path.Combine(settings.TargetDir, modelFile.Name);
+        // Determine final paths for model and mmproj files
+        string modelPath;
+        string? mmprojPath = null;
 
-        string? mmprojPath = mmprojFile != null
-            ? Path.Combine(settings.TargetDir, mmprojFile.Name)
-            : null;
+        if (settings.Folder)
+        {
+            modelPath = Path.Combine(actualTargetDir, modelFile.Name);
+            if (mmprojFile != null)
+            {
+                mmprojPath = Path.Combine(actualTargetDir, mmprojFile.Name);
+            }
+        }
+        else
+        {
+            modelPath = Path.Combine(actualTargetDir, modelFile.Name);
+            if (mmprojFile != null)
+            {
+                mmprojPath = Path.Combine(actualTargetDir, mmprojFile.Name);
+            }
+        }
 
         PrintLlamaCommand(modelPath, mmprojPath);
 

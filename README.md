@@ -46,6 +46,7 @@ hfget download <model> [targetDir]
 **Options:**
 - `--token <token>` - Hugging Face API token (for private models)
 - `--threads <count>` - Number of parallel download threads (default: 4)
+- `-f, --folder` - Create a folder with the model name
 
 ### List model files
 
@@ -92,6 +93,19 @@ hfget get "mistralai/Mistral-7B-Instruct-v0.3:q4_k_m" --threads 8 ./models
 ```bash
 hfget download --token hf_XXXXXXXXXX private-user/private-model:q5_k_m
 ```
+
+### Download with folder organization
+
+```bash
+hfget download -f unsloth/Qwen3.5-2B-GGUF:IQ2_XXS ./models
+```
+
+This will:
+1. Search for a `.gguf` file containing `IQ2_XXS` in the filename
+2. Look for an associated `mmproj` file (for vision models)
+3. Create a folder `models/unsloth_Qwen3.5-2B-GGUF_IQ2_XXS`
+4. Download files with their original names inside the folder
+5. Print a command to run with `llama-server.exe`
 
 ### List available files in a model
 

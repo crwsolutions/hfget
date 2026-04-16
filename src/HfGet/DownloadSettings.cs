@@ -16,4 +16,7 @@ internal class DownloadSettings : CommandSettings
 
     [CommandOption("--threads")]
     public int Threads { get; set; } = 4;
+
+    [CommandOption("-f|--folder")]
+    public bool Folder { get; set; } = false;
 }

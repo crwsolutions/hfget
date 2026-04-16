@@ -41,7 +41,7 @@ hfget download <model> [targetDir]
 
 **Arguments:**
 - `<model>` - Model identifier in format `author/model:variant`
-- `[targetDir]` - Destination directory (default: `./models`)
+- `[targetDir]` - Destination directory (default: current directory)
 
 **Options:**
 - `--token <token>` - Hugging Face API token (for private models)
@@ -63,17 +63,23 @@ hfget list <model>
 
 ## Examples
 
-### Download a model with default settings
+### Download a model to current directory (default)
 
 ```bash
-hfget download bartowski/Llama-3.2-1B-Instruct-GGUF:q4_k_m ./models
+hfget download bartowski/Llama-3.2-1B-Instruct-GGUF:q4_k_m
 ```
 
 This will:
 1. Search for a `.gguf` file containing `q4_k_m` in the filename
 2. Look for an associated `mmproj` file (for vision models)
-3. Download matching files to `./models` directory
+3. Download matching files to the current directory
 4. Print a command to run with `llama-server.exe`
+
+### Download a model to a specific directory
+
+```bash
+hfget download bartowski/Llama-3.2-1B-Instruct-GGUF:q4_k_m ./models
+```
 
 ### Download with custom thread count
 

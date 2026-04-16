@@ -1,4 +1,4 @@
-﻿using Spectre.Console.Cli;
+using Spectre.Console.Cli;
 // =======================
 // DOWNLOAD COMMAND
 // =======================
@@ -9,7 +9,7 @@ internal class DownloadSettings : CommandSettings
     public string Model { get; set; } = "";
 
     [CommandArgument(1, "[targetDir]")]
-    public string TargetDir { get; set; } = "./models";
+    public string TargetDir { get; set; } = ".";
 
     [CommandOption("--token")]
     public string? Token { get; set; }

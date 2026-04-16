@@ -25,6 +25,14 @@ dotnet build
 
 ### Download a model
 
+#### With Default command
+
+```bash
+hfget <model> [targetDir]
+```
+
+#### Or with explicit command
+
 ```bash
 hfget download <model> [targetDir]
 ```

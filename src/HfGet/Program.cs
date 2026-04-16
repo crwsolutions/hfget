@@ -2,6 +2,8 @@
 
 var app = new CommandApp();
 
+app.SetDefaultCommand<DownloadCommand>();
+
 app.Configure(config =>
 {
     config.SetApplicationName("hfget");

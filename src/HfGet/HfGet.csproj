@@ -10,7 +10,7 @@
 		<PackAsTool>True</PackAsTool>
 		<ToolCommandName>hfget</ToolCommandName>
 		<PackageId>crwsolutions.hfget</PackageId>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<Title>Huggingface Get Tool</Title>
 		<Description>A CLI tool to get a huggingface model</Description>
 		<Authors>Colin Wilmans</Authors>
@@ -27,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Spectre.Console.Cli" Version="0.55.0" />
+		<PackageReference Include="Spectre.Console.Cli" Version="0.57.2" />
 	</ItemGroup>
 
 </Project>

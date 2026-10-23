@@ -21,6 +21,31 @@ Download the latest release from the [GitHub releases page](https://github.com/c
 dotnet build
 ```
 
+### CLI Tool Installation
+
+Build the project and pack the package:
+
+```powershell
+dotnet build src/hfget.csproj -c Release
+dotnet pack src/hfget.csproj -c Release --no-build
+```
+
+Install the tool globally:
+
+```powershell
+dotnet tool install --global --add-source .\src\bin\Release hfget
+```
+
+After installation, `hfget` is directly available in your terminal.
+
+### Update
+
+After a new `dotnet pack` with a higher version (update `<Version>` in csproj):
+
+```powershell
+dotnet tool update --global --add-source .\src\bin\Release hfget
+```
+
 ## Usage
 
 ### Download a model

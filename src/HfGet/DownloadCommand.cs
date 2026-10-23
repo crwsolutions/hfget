@@ -3,7 +3,7 @@ using Spectre.Console.Cli;
 
 internal class DownloadCommand : AsyncCommand<DownloadSettings>
 {
-    protected override async Task<int> ExecuteAsync(
+    public override async Task<int> ExecuteAsync(
         CommandContext context,
         DownloadSettings settings,
         CancellationToken cancellationToken)

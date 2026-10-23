@@ -3,7 +3,8 @@ using Spectre.Console.Cli;
 
 internal class ListCommand : AsyncCommand<ListSettings>
 {
-    protected override async Task<int> ExecuteAsync(
+
+    public override async Task<int> ExecuteAsync(
         CommandContext context,
         ListSettings settings,
         CancellationToken cancellationToken)

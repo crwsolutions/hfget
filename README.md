@@ -26,24 +26,24 @@ dotnet build
 Build the project and pack the package:
 
 ```powershell
-dotnet build src/hfget.csproj -c Release
-dotnet pack src/hfget.csproj -c Release --no-build
+dotnet build src/HfGet/HfGet.csproj -c Release
+dotnet pack src/HfGet/HfGet.csproj -c Release --no-build
 ```
 
 Install the tool globally:
 
 ```powershell
-dotnet tool install --global --add-source .\src\bin\Release hfget
+dotnet tool install --global --add-source .\src\HfGet\bin\Release crwsolutions.hfget
 ```
 
-After installation, `hfget` is directly available in your terminal.
+After installation, `hfget` is directly available in your terminal (defined by `<ToolCommandName>` in the csproj).
 
 ### Update
 
 After a new `dotnet pack` with a higher version (update `<Version>` in csproj):
 
 ```powershell
-dotnet tool update --global --add-source .\src\bin\Release hfget
+dotnet tool update --global --add-source .\src\HfGet\bin\Release crwsolutions.hfget
 ```
 
 ## Usage
